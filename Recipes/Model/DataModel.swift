@@ -5,7 +5,7 @@
 //  Created by Antonio Hernández Barbadilla on 12/5/25.
 //
 
-import SwiftUI
+import Foundation
 
 struct Recipes: Codable {
     let recipes: [Recipe]
@@ -14,7 +14,7 @@ struct Recipes: Codable {
     let limit: Int
 }
 
-struct Recipe: Codable {
+struct Recipe: Codable, Identifiable {
     let id: Int
     let name: String
     let ingredients: [String]

@@ -8,17 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(RecipesViewModel.self) private var viewModel
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            Tab("Recipes", systemImage: "list.bullet") {
+                RecipesListView()
+            }
+            Tab("Saved", systemImage: "list.bullet") {
+                EmptyView()
+            }
+            Tab("Shopping List", systemImage: "list.bullet") {
+                EmptyView()
+            }
+            Tab("Timer", systemImage: "list.bullet") {
+                EmptyView()
+            }
         }
-        .padding()
+        .navigationBarBackButtonHidden()
     }
 }
 
 #Preview {
     ContentView()
+        .environment(RecipesViewModel())
 }

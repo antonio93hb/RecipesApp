@@ -10,12 +10,12 @@ import SwiftUI
 @main
 struct RecipesApp: App {
     
-    @State private var viewModel = ViewModel()
+    @State private var recipesModel = RecipesViewModel()
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(viewModel)
+            WellcomeView()
+                .environment(recipesModel)
         }
     }
 }
