@@ -13,6 +13,9 @@ struct RecipesListView: View {
     
     var body: some View {
         NavigationStack {
+            
+            @Bindable var recipesViewModelb = recipesViewModel
+            
             List{
                 ForEach(recipesViewModel.recipes) { recipe in
                     
@@ -23,16 +26,15 @@ struct RecipesListView: View {
                     }
                 }
                 .onDelete(perform: recipesViewModel.deleteRecipe(at:))
-                //.onMove(perform: <#((IndexSet, Int) -> Void)?#>)
                 
             }
             .navigationTitle("Recipes")
+            .difficultButton(difficultOption: $recipesViewModelb.difficultOption)
         }
     }
 }
 
 #Preview {
     RecipesListView()
-    //.environment(RecipesViewModel())
         .preview
 }

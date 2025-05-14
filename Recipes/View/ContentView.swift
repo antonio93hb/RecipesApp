@@ -30,6 +30,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        //.environment(RecipesViewModel())
         .preview
 }

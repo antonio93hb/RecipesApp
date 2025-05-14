@@ -29,13 +29,10 @@ struct RecipeRow: View {
                     .font(.headline)
                 
                 HStack(spacing: 4){
-                    Image(systemName: "clock")
-                    Text("\(recipe.prepTimeMinutes + recipe.cookTimeMinutes) min")
+                    Text("⏱️ \(recipe.prepTimeMinutes + recipe.cookTimeMinutes) min")
                     Divider()
                         .frame(height: 20)
-                    
-                    Image(systemName: "fork.knife")
-                    Text("\(recipe.servings) portions")
+                    Text("🍽️ \(recipe.servings) portions")
                 }
                 .font(.caption)
                 .bold()

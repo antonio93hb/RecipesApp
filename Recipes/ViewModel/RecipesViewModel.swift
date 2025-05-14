@@ -15,6 +15,24 @@ final class RecipesViewModel {
     
     var recipes: [Recipe]
     
+    var difficultOption: DifficultOption = .all
+    
+    var filteredRecipes: [Recipe] {
+        recipes
+            .filter { recipe in
+            switch difficultOption {
+            case .all:
+                return true
+            case .easy:
+                return recipe.difficulty.lowercased() == "easy"
+            case .medium:
+                return recipe.difficulty.lowercased() == "medium"
+            case .hard:
+                return recipe.difficulty.lowercased() == "hard"
+            }
+        }
+    }
+    
     init(repository: RepositoryProtocol = Repository()) {
         self.repository = repository
         do {
@@ -28,6 +46,8 @@ final class RecipesViewModel {
     // MARK: - Actions
     
     func deleteRecipe(at offsets: IndexSet) {
-        
+        for index in offsets {
+            recipes.remove(at: index)
+        }
     }
 }
