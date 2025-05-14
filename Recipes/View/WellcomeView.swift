@@ -35,7 +35,6 @@ struct WellcomeView: View {
                         .blur(radius: 12)
                         .frame(width: 220, height: 55)
                     
-                    
                     Button {
                         goToContent = true
                     } label: {

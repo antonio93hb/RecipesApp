@@ -10,4 +10,7 @@ struct Repository: RepositoryProtocol {
     var url: URL {
         Bundle.main.url(forResource: "recipes_formatted", withExtension: "json")!
     }
+    var urlDoc: URL {
+        .documentsDirectory.appending(path: "recipes_formatted.json")
+    }
 }

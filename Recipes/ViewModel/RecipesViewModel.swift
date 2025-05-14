@@ -8,7 +8,6 @@
 import SwiftUI
 import Foundation
 
-//final class RecipesViewModel: ObservableObject {
 @Observable
 final class RecipesViewModel {
     

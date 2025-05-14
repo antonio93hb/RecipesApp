@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(RecipesViewModel.self) private var viewModel
+    @Environment(RecipesViewModel.self) private var recipesViewModel
     var body: some View {
         TabView {
             Tab("Recipes", systemImage: "list.bullet") {
@@ -30,5 +30,6 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environment(RecipesViewModel())
+        //.environment(RecipesViewModel())
+        .preview
 }

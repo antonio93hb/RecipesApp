@@ -9,12 +9,20 @@ import Foundation
 
 protocol RepositoryProtocol {
     var url: URL { get }
+    var urlDoc: URL { get }
 }
 
 extension RepositoryProtocol {
     func getJSON<T>() throws -> T where T: Decodable {
-        let fileURL = url
+        let fileURL = if FileManager.default.fileExists(atPath: urlDoc.path()) { urlDoc } else { url }
+        
         let data = try Data(contentsOf: fileURL)
         return try JSONDecoder().decode(T.self, from: data)
     }
+    
+//    func saveJSON<T: Encodable>(_ value: T) throws {
+//        let fileURL = url
+//        let data = try JSONEncoder().encode(value)
+//        try data.write(to: fileURL)
+//    }
 }

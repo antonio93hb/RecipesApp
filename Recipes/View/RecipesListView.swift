@@ -9,10 +9,10 @@ import SwiftUI
 
 struct RecipesListView: View {
     
-    @Environment(RecipesViewModel.self) private var recipesModel
+    @Environment(RecipesViewModel.self) private var recipesViewModel
 
     var body: some View {
-        List(recipesModel.recipes) { recipe in
+        List(recipesViewModel.recipes) { recipe in
             Text(recipe.name)
         }
     }
@@ -20,5 +20,6 @@ struct RecipesListView: View {
 
 #Preview {
     RecipesListView()
-        .environment(RecipesViewModel())
+        //.environment(RecipesViewModel())
+        .preview
 }
