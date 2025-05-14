@@ -10,6 +10,7 @@ import SwiftUI
 struct WellcomeView: View {
     
     @State private var goToContent = false
+    @State private var angle: Angle = .degrees(0)
     
     var body: some View {
         NavigationStack{
@@ -27,13 +28,21 @@ struct WellcomeView: View {
                     RoundedRectangle(cornerRadius: 25)
                         .strokeBorder(
                             AngularGradient(
-                                gradient: Gradient(colors: [.blue, .red, .blue]),
-                                center: .center
+                                gradient: Gradient(colors: [
+                                    .blue, .red, .blue
+                                ]),
+                                center: .center,
+                                angle: angle
                             ),
                             lineWidth: 10
                         )
-                        .blur(radius: 12)
+                        .blur(radius: 7)
                         .frame(width: 220, height: 55)
+                        .onAppear{
+                            withAnimation(.linear(duration: 4).repeatForever(autoreverses: false)) {
+                                angle = .degrees(360)
+                            }
+                        }
                     
                     Button {
                         goToContent = true
