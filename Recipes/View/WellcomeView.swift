@@ -74,4 +74,5 @@ struct WellcomeView: View {
 
 #Preview {
     WellcomeView()
+        .preview
 }

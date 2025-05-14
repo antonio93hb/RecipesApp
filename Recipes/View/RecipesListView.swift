@@ -10,16 +10,29 @@ import SwiftUI
 struct RecipesListView: View {
     
     @Environment(RecipesViewModel.self) private var recipesViewModel
-
+    
     var body: some View {
-        List(recipesViewModel.recipes) { recipe in
-            Text(recipe.name)
+        NavigationStack {
+            List{
+                ForEach(recipesViewModel.recipes) { recipe in
+                    
+                    NavigationLink(
+                        destination: DetailView(recipe: recipe)
+                    ) {
+                        RecipeRow(recipe: recipe)
+                    }
+                }
+                .onDelete(perform: recipesViewModel.deleteRecipe(at:))
+                //.onMove(perform: <#((IndexSet, Int) -> Void)?#>)
+                
+            }
+            .navigationTitle("Recipes")
         }
     }
 }
 
 #Preview {
     RecipesListView()
-        //.environment(RecipesViewModel())
+    //.environment(RecipesViewModel())
         .preview
 }

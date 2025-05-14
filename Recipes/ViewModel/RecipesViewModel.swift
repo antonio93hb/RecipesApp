@@ -24,4 +24,10 @@ final class RecipesViewModel {
             fatalError("No se pudieron cargar las recetas: \(error)")
         }
     }
+    
+    // MARK: - Actions
+    
+    func deleteRecipe(at offsets: IndexSet) {
+        
+    }
 }

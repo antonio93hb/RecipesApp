@@ -14,14 +14,14 @@ struct ContentView: View {
             Tab("Recipes", systemImage: "list.bullet") {
                 RecipesListView()
             }
-            Tab("Saved", systemImage: "list.bullet") {
-                EmptyView()
+            Tab("Saved", systemImage: "bookmark") {
+                SavedRecipesView()
             }
-            Tab("Shopping List", systemImage: "list.bullet") {
-                EmptyView()
+            Tab("Shopping List", systemImage: "cart") {
+                ShoppingListView()
             }
-            Tab("Timer", systemImage: "list.bullet") {
-                EmptyView()
+            Tab("Timer", systemImage: "timer") {
+                TimerView()
             }
         }
         .navigationBarBackButtonHidden()
