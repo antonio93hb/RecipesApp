@@ -10,26 +10,33 @@ import SwiftUI
 struct RecipesListView: View {
     
     @Environment(RecipesViewModel.self) private var recipesViewModel
+    @State private var selectedCuisine: CuisineType = .all
     
     var body: some View {
+        
         NavigationStack {
             
             @Bindable var recipesViewModelb = recipesViewModel
-            
-            List{
-                ForEach(recipesViewModel.filteredRecipes) { recipe in
-                    
-                    NavigationLink(
-                        destination: DetailView(recipe: recipe)
-                    ) {
-                        RecipeRow(recipe: recipe)
-                    }
-                }
-                .onDelete(perform: recipesViewModel.deleteRecipe(at:))
+            VStack {
+                CountryButton(selectedCuisine: $recipesViewModelb.countryCuisineOption)
                 
+                
+                
+                List{
+                    ForEach(recipesViewModel.filteredRecipes) { recipe in
+                        
+                        NavigationLink(
+                            destination: DetailView(recipe: recipe)
+                        ) {
+                            RecipeRow(recipe: recipe)
+                        }
+                    }
+                    .onDelete(perform: recipesViewModel.deleteRecipe(at:))
+                    .listStyle(.automatic)
+                }
+                .navigationTitle("Recipes")
+                .difficultButton(difficultOption: $recipesViewModelb.difficultOption)
             }
-            .navigationTitle("Recipes")
-            .difficultButton(difficultOption: $recipesViewModelb.difficultOption)
         }
     }
 }

@@ -17,20 +17,43 @@ final class RecipesViewModel {
     
     var difficultOption: DifficultOption = .all
     
+    var countryCuisineOption: CuisineType = .all
+    
     var filteredRecipes: [Recipe] {
         recipes
             .filter { recipe in
-            switch difficultOption {
-            case .all:
-                return true
-            case .easy:
-                return recipe.difficulty.lowercased() == "easy"
-            case .medium:
-                return recipe.difficulty.lowercased() == "medium"
-            case .hard:
-                return recipe.difficulty.lowercased() == "hard"
+                let matchesDifficulty: Bool = {
+                    switch difficultOption {
+                    case .all:
+                        return true
+                    case .easy:
+                        return recipe.difficulty.lowercased() == "easy"
+                    case .medium:
+                        return recipe.difficulty.lowercased() == "medium"
+                    case .hard:
+                        return recipe.difficulty.lowercased() == "hard"
+                    }
+                }()
+                
+                let matchesCuisine: Bool = {
+                    switch countryCuisineOption {
+                    case .all:
+                        return true
+                    case .italian:
+                        return recipe.cuisine.lowercased() == "italian"
+                    case .mexican:
+                        return recipe.cuisine.lowercased() == "mexican"
+                    case .indian:
+                        return recipe.cuisine.lowercased() == "indian"
+                    case .japanese:
+                        return recipe.cuisine.lowercased() == "japanese"
+                    case .spanish:
+                        return recipe.cuisine.lowercased() == "spanish"
+                        
+                    }
+                }()
+                return matchesDifficulty && matchesCuisine
             }
-        }
     }
     
     init(repository: RepositoryProtocol = Repository()) {

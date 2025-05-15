@@ -43,11 +43,7 @@ struct DifficultButton: ViewModifier {
                         .background(Color.purple.opacity(0.2))
                         .foregroundStyle(.purple)
                         .clipShape(Capsule())
-
-                            
                     }
-                    
-
                 }
             }
     }
