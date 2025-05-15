@@ -17,7 +17,7 @@ struct RecipesListView: View {
             @Bindable var recipesViewModelb = recipesViewModel
             
             List{
-                ForEach(recipesViewModel.recipes) { recipe in
+                ForEach(recipesViewModel.filteredRecipes) { recipe in
                     
                     NavigationLink(
                         destination: DetailView(recipe: recipe)

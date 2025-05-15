@@ -33,8 +33,21 @@ struct DifficultButton: ViewModifier {
                             }
                         }
                     } label: {
-                        Text(difficultOption.rawValue)
+                        HStack {
+                            Image(systemName: "brain.head.profile")
+                            Text(difficultOption.rawValue)
+
+                        }
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(Color.purple.opacity(0.2))
+                        .foregroundStyle(.purple)
+                        .clipShape(Capsule())
+
+                            
                     }
+                    
+
                 }
             }
     }
