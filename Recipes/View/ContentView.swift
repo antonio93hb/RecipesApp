@@ -24,7 +24,6 @@ struct ContentView: View {
                 TimerView()
             }
         }
-        .navigationBarBackButtonHidden()
     }
 }
 

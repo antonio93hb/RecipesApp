@@ -9,11 +9,13 @@ import SwiftUI
 
 struct WellcomeView: View {
     
-    @State private var goToContent = false
+    @State private var showContentView = false
     @State private var angle: Angle = .degrees(0)
     
     var body: some View {
-        NavigationStack{
+        if showContentView {
+            ContentView()
+        } else {
             VStack {
                 Text("Hi, Chef!")
                     .font(.largeTitle)
@@ -43,9 +45,8 @@ struct WellcomeView: View {
                                 angle = .degrees(360)
                             }
                         }
-                    
                     Button {
-                        goToContent = true
+                        showContentView = true
                     } label: {
                         Text("Press to continue")
                             .font(.headline)
@@ -65,9 +66,6 @@ struct WellcomeView: View {
                 }
             }
             .padding()
-            .navigationDestination(isPresented: $goToContent) {
-                ContentView()
-            }
         }
     }
 }

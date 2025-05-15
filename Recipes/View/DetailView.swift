@@ -81,9 +81,6 @@ struct DetailView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
-        .navigationTitle("Recipes")
-        .navigationBarTitleDisplayMode(.inline)
-
     }
 }
 
