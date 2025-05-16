@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(RecipesViewModel.self) private var recipesViewModel
+    @State private var shoppingListViewModel = ShoppingListViewModel()
     var body: some View {
         TabView {
             Tab("Recipes", systemImage: "list.bullet") {
@@ -19,6 +20,7 @@ struct ContentView: View {
             }
             Tab("Shopping List", systemImage: "cart") {
                 ShoppingListView()
+                    .environment(shoppingListViewModel)
             }
             Tab("Timer", systemImage: "timer") {
                 TimerView()

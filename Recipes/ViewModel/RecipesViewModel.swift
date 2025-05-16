@@ -5,7 +5,7 @@
 //  Created by Antonio Hernández Barbadilla on 12/5/25.
 //
 
-import SwiftUI
+//import SwiftUI
 import Foundation
 
 @Observable
@@ -13,7 +13,7 @@ final class RecipesViewModel {
     
     let repository: RepositoryProtocol
     
-    var recipes: [Recipe]
+    var recipes: [RecipeDataModel]
     
     var difficultOption: DifficultOption = .all
     
@@ -23,7 +23,7 @@ final class RecipesViewModel {
     
     var searchText = ""
     
-    var filteredRecipes: [Recipe] {
+    var filteredRecipes: [RecipeDataModel] {
         recipes
             .filter { recipe in
                 let matchesDifficulty: Bool = {
@@ -92,17 +92,15 @@ final class RecipesViewModel {
     
     func toggleFavorite(recipeId: Int) {
         guard let index = recipes.firstIndex(where: { $0.id == recipeId }) else { return }
-        
         recipes[index].isFavorite.toggle()
     }
     
-    var savedRecipes: [Recipe] {
+    var savedRecipes: [RecipeDataModel] {
         recipes.filter { $0.isSaved }
     }
     
     func toggleSaved(recipeId: Int) {
         guard let index = recipes.firstIndex(where: { $0.id == recipeId }) else { return }
-        
         recipes[index].isSaved.toggle()
     }
 }

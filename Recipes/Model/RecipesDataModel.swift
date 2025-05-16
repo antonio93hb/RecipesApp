@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Recipes: Codable {
-    let recipes: [Recipe]
+struct RecipesDataModel: Codable {
+    let recipes: [RecipeDataModel]
     let total: Int
     let skip: Int
     let limit: Int
 }
 
-struct Recipe: Codable, Identifiable {
+struct RecipeDataModel: Codable, Identifiable {
     let id: Int
     let name: String
     let ingredients: [String]

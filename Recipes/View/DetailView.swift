@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     
-    let recipe: Recipe
+    let recipe: RecipeDataModel
     
     var body: some View {
         ScrollView {

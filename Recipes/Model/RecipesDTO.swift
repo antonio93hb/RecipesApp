@@ -32,8 +32,8 @@ struct RecipeDTO: Codable {
     let reviewCount: Int
     let mealType: [String]
     
-    var recipe: Recipe {
-        Recipe(
+    var recipe: RecipeDataModel {
+        RecipeDataModel(
             id: id,
             name: name,
             ingredients: ingredients,

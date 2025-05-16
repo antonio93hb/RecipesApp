@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecipeRow: View {
     
-    let recipe: Recipe
+    let recipe: RecipeDataModel
     
     var body: some View {
         HStack(spacing: 8){

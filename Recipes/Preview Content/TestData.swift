@@ -16,9 +16,9 @@ struct RepositoryTest: RepositoryProtocol {
     }
 }
 
-extension Recipe {
-    static var preview: Recipe {
-        Recipe(
+extension RecipeDataModel {
+    static var preview: RecipeDataModel {
+        RecipeDataModel(
             id : 1,
             name: "Classic Margherita Pizza",
             ingredients: [
