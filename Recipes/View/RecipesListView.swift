@@ -11,6 +11,7 @@ struct RecipesListView: View {
     
     @Environment(RecipesViewModel.self) private var recipesViewModel
     @State private var selectedCuisine: CuisineType = .all
+    @State private var showFavoritesOnly: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -51,6 +52,7 @@ struct RecipesListView: View {
                 }
                 .navigationTitle("Recipes")
                 .difficultButton(difficultOption: $recipesViewModelb.difficultOption)
+                .favoriteButton(isFavorite: $recipesViewModelb.showFavoritesOnly)
             }
         }
     }

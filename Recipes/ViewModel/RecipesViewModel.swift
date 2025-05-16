@@ -19,6 +19,8 @@ final class RecipesViewModel {
     
     var countryCuisineOption: CuisineType = .all
     
+    var showFavoritesOnly: Bool = false
+    
     var filteredRecipes: [Recipe] {
         recipes
             .filter { recipe in
@@ -52,7 +54,11 @@ final class RecipesViewModel {
                         
                     }
                 }()
-                return matchesDifficulty && matchesCuisine
+                
+                var matchesFavorites: Bool {
+                    return !showFavoritesOnly || recipe.isFavorite
+                }
+                return matchesDifficulty && matchesCuisine && matchesFavorites
             }
     }
     
