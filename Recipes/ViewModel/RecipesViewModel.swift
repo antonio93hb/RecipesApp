@@ -59,8 +59,12 @@ final class RecipesViewModel {
     init(repository: RepositoryProtocol = Repository()) {
         self.repository = repository
         do {
-            let decoded: Recipes = try repository.getJSON()
-            self.recipes = decoded.recipes
+            if FileManager.default.fileExists(atPath: repository.urlDoc.path()){
+                self.recipes = try repository.getJSON()
+            } else {
+                let decoded: RecipesDTO = try repository.getJSON()
+                self.recipes = decoded.recipes.map(\.recipe)
+            }
         } catch {
             fatalError("No se pudieron cargar las recetas: \(error)")
         }

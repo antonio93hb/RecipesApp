@@ -53,7 +53,8 @@ extension Recipe {
             reviewCount: 98,
             mealType: [
                 "Dinner"
-            ]
+            ],
+            isFavorite: false
         )
     }
 }

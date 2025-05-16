@@ -31,4 +31,5 @@ struct Recipe: Codable, Identifiable {
     let rating: Float
     let reviewCount: Int
     let mealType: [String]
+    var isFavorite: Bool
 }
