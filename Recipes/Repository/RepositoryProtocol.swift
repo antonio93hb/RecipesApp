@@ -19,10 +19,4 @@ extension RepositoryProtocol {
         let data = try Data(contentsOf: fileURL)
         return try JSONDecoder().decode(T.self, from: data)
     }
-    
-//    func saveJSON<T: Encodable>(_ value: T) throws {
-//        let fileURL = url
-//        let data = try JSONEncoder().encode(value)
-//        try data.write(to: fileURL)
-//    }
 }

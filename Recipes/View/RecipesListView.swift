@@ -31,15 +31,15 @@ struct RecipesListView: View {
                                 .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                                     Button {
                                         // Acción para marcar como favorito
-                                        print("Favorite \(recipe.name)")
                                         recipesViewModel.toggleFavorite(recipeId: recipe.id)
                                     } label: {
-                                        Label("Favorite", systemImage: "heart")
+                                        Label("Favorite", systemImage: "star")
                                     }
-                                    .tint(.red)
+                                    .tint(.yellow)
                                     Button {
                                         // Acción para guardar receta
                                         print("Saved \(recipe.name)")
+                                        recipesViewModel.toggleSaved(recipeId: recipe.id)
                                     } label: {
                                         Label("Save", systemImage: "bookmark")
                                     }

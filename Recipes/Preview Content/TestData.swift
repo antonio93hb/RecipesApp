@@ -54,7 +54,8 @@ extension Recipe {
             mealType: [
                 "Dinner"
             ],
-            isFavorite: false
+            isFavorite: false,
+            isSaved: false
         )
     }
 }

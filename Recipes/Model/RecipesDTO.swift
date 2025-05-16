@@ -50,7 +50,8 @@ struct RecipeDTO: Codable {
             rating: rating,
             reviewCount: reviewCount,
             mealType: mealType,
-            isFavorite: false
+            isFavorite: false,
+            isSaved: false
         )
     }
 }

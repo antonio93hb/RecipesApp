@@ -89,4 +89,14 @@ final class RecipesViewModel {
         
         recipes[index].isFavorite.toggle()
     }
+    
+    var savedRecipes: [Recipe] {
+        recipes.filter { $0.isSaved }
+    }
+    
+    func toggleSaved(recipeId: Int) {
+        guard let index = recipes.firstIndex(where: { $0.id == recipeId }) else { return }
+        
+        recipes[index].isSaved.toggle()
+    }
 }

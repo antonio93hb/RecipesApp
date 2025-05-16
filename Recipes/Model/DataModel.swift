@@ -32,4 +32,5 @@ struct Recipe: Codable, Identifiable {
     let reviewCount: Int
     let mealType: [String]
     var isFavorite: Bool
+    var isSaved: Bool
 }

@@ -38,9 +38,16 @@ struct RecipeRow: View {
                 .bold()
                 .foregroundStyle(.gray)
                 
-                if recipe.isFavorite {
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.yellow)
+                HStack{
+                    if recipe.isFavorite {
+                        Image(systemName: "star.fill")
+                            .foregroundColor(.yellow)
+                    }
+                    
+                    if recipe.isSaved {
+                        Image(systemName: "bookmark.fill")
+                            .foregroundColor(.blue)
+                    }
                 }
             }
         }
