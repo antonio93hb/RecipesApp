@@ -53,6 +53,10 @@ struct RecipesListView: View {
                 .navigationTitle("Recipes")
                 .difficultButton(difficultOption: $recipesViewModelb.difficultOption)
                 .favoriteButton(isFavorite: $recipesViewModelb.showFavoritesOnly)
+                .searchable(
+                    text: $recipesViewModelb.searchText,
+                    prompt: "Search recipes"
+                )
             }
         }
     }

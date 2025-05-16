@@ -21,6 +21,8 @@ final class RecipesViewModel {
     
     var showFavoritesOnly: Bool = false
     
+    var searchText = ""
+    
     var filteredRecipes: [Recipe] {
         recipes
             .filter { recipe in
@@ -58,7 +60,11 @@ final class RecipesViewModel {
                 var matchesFavorites: Bool {
                     return !showFavoritesOnly || recipe.isFavorite
                 }
-                return matchesDifficulty && matchesCuisine && matchesFavorites
+                
+                let matchesSearchText: Bool = searchText.isEmpty ||
+                recipe.name.lowercased().contains(searchText.lowercased())
+                
+                return matchesDifficulty && matchesCuisine && matchesFavorites && matchesSearchText
             }
     }
     

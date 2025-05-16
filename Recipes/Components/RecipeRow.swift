@@ -12,7 +12,7 @@ struct RecipeRow: View {
     let recipe: Recipe
     
     var body: some View {
-        HStack{
+        HStack(spacing: 8){
             AsyncImage(url: recipe.image) { image in
                 image
                     .resizable()
