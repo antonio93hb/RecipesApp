@@ -37,6 +37,11 @@ struct RecipeRow: View {
                 .font(.caption)
                 .bold()
                 .foregroundStyle(.gray)
+                
+                if recipe.isFavorite {
+                    Image(systemName: "star.fill")
+                        .foregroundColor(.yellow)
+                }
             }
         }
     }

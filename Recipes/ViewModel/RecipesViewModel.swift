@@ -77,4 +77,10 @@ final class RecipesViewModel {
             recipes.remove(at: index)
         }
     }
+    
+    func toggleFavorite(recipeId: Int) {
+        guard let index = recipes.firstIndex(where: { $0.id == recipeId }) else { return }
+        
+        recipes[index].isFavorite.toggle()
+    }
 }

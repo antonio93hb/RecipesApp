@@ -31,11 +31,11 @@ struct RecipesListView: View {
                                     Button {
                                         // Acción para marcar como favorito
                                         print("Favorite \(recipe.name)")
+                                        recipesViewModel.toggleFavorite(recipeId: recipe.id)
                                     } label: {
                                         Label("Favorite", systemImage: "heart")
                                     }
                                     .tint(.red)
-                                    
                                     Button {
                                         // Acción para guardar receta
                                         print("Saved \(recipe.name)")
