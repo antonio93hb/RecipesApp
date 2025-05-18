@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @Environment(RecipesViewModel.self) private var recipesViewModel
     @State private var shoppingListViewModel = ShoppingListViewModel()
+    @State private var timerViewModel = TimerViewModel()
     var body: some View {
         TabView {
             Tab("Recipes", systemImage: "list.bullet") {
@@ -24,6 +25,7 @@ struct ContentView: View {
             }
             Tab("Timer", systemImage: "timer") {
                 TimerView()
+                    .environment(timerViewModel)
             }
         }
     }
