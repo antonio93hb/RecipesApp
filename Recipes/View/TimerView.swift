@@ -38,12 +38,14 @@ struct TimerView: View {
                         timerViewModel.timeRemaining = timerViewModel.timerDataModel.totalMinutes * 60
                     }
                 }
+                .disabled(!timerViewModel.timerDataModel.isPaused)
                 
                 TimerControlButton(systemName: "plus") {
                     timerViewModel.timerDataModel.totalMinutes += 1
                     timerViewModel.timeRemaining = timerViewModel.timerDataModel.totalMinutes * 60
 
                 }
+                .disabled(!timerViewModel.timerDataModel.isPaused)
                 
             }
             .padding(.vertical, 30)
@@ -97,6 +99,7 @@ struct ActionCircleButton: View {
                 .background(color)
                 .clipShape(Circle())
         }
+        .shadow(color: .black, radius: 10, x: 0, y: 10)
     }
 }
 
