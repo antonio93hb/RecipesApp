@@ -28,6 +28,7 @@ struct ContentView: View {
                     .environment(timerViewModel)
             }
         }
+        .tabViewStyle(.sidebarAdaptable)
     }
 }
 

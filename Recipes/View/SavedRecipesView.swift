@@ -10,7 +10,6 @@ import SwiftUI
 struct SavedRecipesView: View {
     
     @Environment(RecipesViewModel.self) private var recipesViewModel
-
     
     var body: some View {
         NavigationStack {
@@ -30,7 +29,6 @@ struct SavedRecipesView: View {
                         .foregroundStyle(.gray.opacity(0.6))
                         .padding(.horizontal, 30)
                 }
-
             } else {
                 List(recipesViewModel.savedRecipes) { recipe in
                     NavigationLink(
@@ -41,11 +39,11 @@ struct SavedRecipesView: View {
                 }
                 .navigationTitle("Saved Recipes")
             }
-
         }
     }
 }
 
 #Preview {
     SavedRecipesView()
+        .preview
 }

@@ -6,28 +6,31 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ShoppingListView: View {
-    
-    @Environment(ShoppingListViewModel.self) private var shoppingListViewModel
+        
+    @Environment(\.modelContext) private var context
+    @Query private var shoppingList: [ProductDB]
+    @State private var newItem: String = ""
     
     var body: some View {
         
         VStack{
-            @Bindable var shoppingListViewModelBindable = shoppingListViewModel
-
             Text("🛒 Shopping List")
                 .font(.title)
                 .bold()
             
             HStack{
-                
-                TextField("Add item...", text: $shoppingListViewModelBindable.newItem)
+                TextField("Add item...", text: $newItem)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.leading)
                 
                 Button{
-                    shoppingListViewModel.addItem()
+                    guard !newItem.isEmpty else { return }
+                    let newProduct = ProductDB(name: newItem, isCompleted: false)
+                    context.insert(newProduct)
+                    newItem = ""
                 } label: {
                     Image(systemName: "plus.circle.fill")
                         .resizable()
@@ -38,7 +41,7 @@ struct ShoppingListView: View {
             }
             .padding(.horizontal, 10)
             
-            if shoppingListViewModel.shoppingList.isEmpty {
+            if shoppingList.isEmpty {
                 VStack(spacing: 8) {
                     
                     Image(systemName: "cart")
@@ -52,12 +55,11 @@ struct ShoppingListView: View {
                 
             } else {
                 List{
-                    ForEach(shoppingListViewModel.shoppingList) { item in
+                    ForEach(shoppingList) { item in
                         Button {
-                            shoppingListViewModel.toggleItemCompletion(item: item)
+                            item.isCompleted.toggle()
                         } label: {
                             HStack {
-                                
                                 Image(systemName: item.isCompleted ? "checkmark.circle.fill" : "circle")
                                     .foregroundStyle(item.isCompleted ? .green : .gray)
                                 
@@ -67,7 +69,12 @@ struct ShoppingListView: View {
                             }
                         }
                     }
-                    .onDelete(perform: shoppingListViewModel.deleteItem)
+                    .onDelete { indexSet in
+                        for index in indexSet {
+                            let itemToDelete = shoppingList[index]
+                            context.delete(itemToDelete)
+                        }
+                    }
                 }
             }
         }
@@ -76,5 +83,6 @@ struct ShoppingListView: View {
 
 #Preview {
     ShoppingListView()
+        .preview
         .environment(ShoppingListViewModel())
 }
